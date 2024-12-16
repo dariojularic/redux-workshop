@@ -5,19 +5,19 @@ const url = "https://course-api.com/react-useReducer-cart-project"
 
 const initialState = {
   cartItems: cartItems,
-  amount: 4,
+  amount: 0,
   total: 0,
   isLoading: true,
 }
 
-export const getCartItems = createAsyncThunk("cart/getCartItems", () => {
-  return fetch(url, {mode: "no-cors"})
-    .then((resp) => {
-      console.log(resp)
-      resp.json()
-    })
-    .catch((err) => console.log(err))
-})
+// export const getCartItems = createAsyncThunk("cart/getCartItems", () => {
+//   return fetch(url, {mode: "no-cors"})
+//     .then((resp) => {
+//       console.log(resp)
+//       resp.json()
+//     })
+//     .catch((err) => console.log(err))
+// })
 
 
 const cartSlice = createSlice({
@@ -61,19 +61,19 @@ const cartSlice = createSlice({
 
   },
 
-  extraReducers: {
-    [getCartItems.pending]:(state) => {
-      state.isLoading = true
-    },
-    [getCartItems.fulfilled]:(state, action) => {
-      console.log(action)
-      state.isLoading = false
-      state.cartItems = action.payload
-    },
-    [getCartItems.rejected]:(state) => {
-      state.isLoading = false
-    }
-  }
+  // extraReducers: {
+  //   [getCartItems.pending]:(state) => {
+  //     state.isLoading = true
+  //   },
+  //   [getCartItems.fulfilled]:(state, action) => {
+  //     console.log(action)
+  //     state.isLoading = false
+  //     state.cartItems = action.payload
+  //   },
+  //   [getCartItems.rejected]:(state) => {
+  //     state.isLoading = false
+  //   }
+  // }
 })
 
 // console.log(cartSlice)
